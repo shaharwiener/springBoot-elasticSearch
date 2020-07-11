@@ -1,0 +1,20 @@
+version: '3.2'
+services:
+  elastic-service:
+    image: shaharcode/elastic:latest
+    container_name: shaharelastic
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    depends_on:
+      - elasticsearch
+  elasticsearch:
+    image: "docker.elastic.co/elasticsearch/elasticsearch:7.6.2"
+    container_name: es7
+    environment:
+      - node.name=es7
+      - cluster.name=es-docker-cluster
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"

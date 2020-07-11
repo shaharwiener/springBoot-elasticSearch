@@ -1,0 +1,18 @@
+---
+server:
+  port: 9000
+
+management:
+  server:
+    port: 8080
+    ssl:
+      enabled:  false
+  endpoints:
+    web:
+      exposure:
+        include:  '*'
+
+spring:
+  data:
+    elasticsearch:
+      cluster-nodes:  elasticsearch:9200
